@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Тема 7</title>
+
+    <!-- ***********************************************
+     Prism.js — підсвічування синтаксису
+    *************************************************** -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-twilight.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"
+      defer
+    ></script>
+
+    <!-- ===== Мови, які використовуємо ===== -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"
+      defer
+    ></script>
+    <!-- HTML -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"
+      defer
+    ></script>
+    <!-- CSS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"
+      defer
+    ></script>
+    <!-- JavaScript -->
+
+    <!-- ===== Плагіни ===== -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"
+      defer
+    ></script>
+
+    <!-- ***********************************************
+         Власні стилі та скрипти
+    *************************************************** -->
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- ***********************************************
+         Шапка сторінки
+    *************************************************** -->
+    <header>
+      <div class="typewriter">
+        <div><h1>⭒.⋆ Тема 7 ⋆˚.</h1></div>
+      </div>
+
+      <p><span class="accent">Масиви</span></p>
+
+      <!-- Вкладки (навігація між частинами) -->
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="part1">Масиви</button>
+        <button class="tab-btn" data-tab="part2">push(), pop()</button>
+        <button class="tab-btn" data-tab="part3">forEach()</button>
+        <button class="tab-btn" data-tab="part4">splice()</button>
+      </nav>
+    </header>
+
+    <!-- ***********************************************
+         Основний вміст сторінки
+    *************************************************** -->
+    <main>
+      <!-- *************** Частина 1 *************** -->
+      <div class="tab-content active" id="tab-part1">
+        <!-- ТЕОРІЯ 1 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">Масиви: </span>Теорія</h2>
+          </div>
+
+          <div class="content">
+            <!-- Масив — це -->
+            <h3 id="theory1-array">Масив — це</h3>
+            <p>
+              Масив — це спеціальний тип змінної, який дозволяє зберігати багато
+              значень одночасно в одному місці.
+            </p>
+            <p>
+              Наприклад, нам треба зберегти відповіді до 5-ти кроків гри.
+              Замість того, щоб створювати 5 окремих змінних для кожної
+              відповіді, можемо створити один масив:
+            </p>
+            <pre><code class="language-javascript">// 5 окремих змінних:
+let answer1 = 1;
+let answer2 = 1;
+let answer3 = 2;
+let answer4 = 2;
+let answer5 = 1;</code></pre>
+            <pre><code class="language-javascript">// Один масив:
+let answers = [1, 1, 2, 2, 1];</code></pre>
+
+            <!-- Доступ до елементів масиву -->
+            <h3 id="theory1-index">Доступ до елементів масиву (індекси)</h3>
+            <p>
+              Кожен елемент у масиві має своє місце (індекс). Індекси
+              починаються з <snap class="accent-2">0</snap>.
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange"];
+
+console.log(fruits); // ['apple', 'banana', 'orange']
+console.log(fruits[0]); // 'apple'
+console.log(fruits[1]); // 'banana'
+console.log(fruits[2]); // 'orange'
+
+fruits[1] = "kiwi";
+console.log(fruits); // ['apple', 'kiwi', 'orange']</code></pre>
+
+            <!-- Довжина масиву -->
+            <h3 id="theory1-length">
+              Довжина масиву (<span class="accent">.length</span>)
+            </h3>
+            <p>
+              Ми можемо дізнатися, скільки елементів у масиві, використовуючи
+              властивість <span class="accent">.length</span>.
+            </p>
+            <pre><code class="language-javascript">console.log(answers.length); // 5
+console.log(fruits.length); // 3</code></pre>
+          </div>
+        </section>
+
+        <!-- ПРИКЛАД 1 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">Масиви: </span>Приклад</h2>
+          </div>
+
+          <div class="content">
+            <h3 id="example1-task">Завдання</h3>
+            <ol class="example">
+              <li>
+                Створити масив <span class="accent">numbers</span> зі значенням
+                <span class="accent">[10, 20, 30, 40, 50]</span>.
+              </li>
+              <li>
+                Вивести у консоль <span class="accent">третє</span> значення
+                масиву.
+              </li>
+              <li>
+                Замінити <span class="accent">друге</span> значення масиву на
+                <span class="accent">100</span>.
+              </li>
+              <li>Вивести у консоль весь масив.</li>
+              <li>
+                Вивести у консоль <span class="accent">довжину</span> масиву.
+              </li>
+            </ol>
+
+            <h3 id="example1-solution">Приклад розв'язання</h3>
+            <pre><code class="language-javascript">let numbers = [10, 20, 30, 40, 50]; // створюємо масив
+console.log(numbers[2]); // виводимо третє значення
+numbers[1] = 100; // змінюємо друге значення
+console.log(numbers); // виводимо весь масив
+console.log(numbers.length); // виводимо довжину</code></pre>
+
+            <h3 id="example1-result">Результат</h3>
+            <img src="./results/example_01.jpg" alt="example 1" />
+          </div>
+        </section>
+
+        <!-- ЗАВДАННЯ 1 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2>Завдання 1</h2>
+          </div>
+
+          <div class="content">
+            <h3>Завдання</h3>
+            <ol class="example">
+              <li>
+                Створити масив <span class="accent">fruits</span> зі значенням
+                <span class="accent"
+                  >["apple", "banana", "orange", "pineapple", "mango",
+                  "pear"]</span
+                >.
+              </li>
+              <li>
+                Вивести у консоль <span class="accent">друге</span> значення
+                масиву.
+              </li>
+              <li>
+                Замінити <span class="accent">четверте</span> значення масиву на
+                <span class="accent">"peach"</span>.
+              </li>
+              <li>Вивести у консоль весь масив.</li>
+              <li>
+                Вивести у консоль <span class="accent">довжину</span> масиву.
+              </li>
+            </ol>
+
+            <h3>Очікуваний результат</h3>
+            <img src="./results/task_01.jpg" alt="task 1" />
+          </div>
+        </section>
+      </div>
+
+      <!-- *************** Частина 2 *************** -->
+      <div class="tab-content" id="tab-part2">
+        <!-- ТЕОРІЯ 2 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">push/pop: </span>Теорія</h2>
+          </div>
+
+          <div class="content">
+            <!-- push() -->
+            <h3 id="theory2-push">push()</h3>
+            <p>
+              Метод <span class="accent">push()</span> використовується, щоб
+              додати новий елемент в кінець масиву:
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana"];
+fruits.push("orange");
+console.log(fruits); // ['apple', 'banana', 'orange']</code></pre>
+
+            <!-- pop() -->
+            <h3 id="theory2-pop">pop()</h3>
+            <p>
+              Метод <span class="accent">pop()</span> використовується, щоб
+              видалити останній елемент масиву:
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange"];
+fruits.pop();
+console.log(fruits); // ['apple', 'banana']</code></pre>
+          </div>
+        </section>
+
+        <!-- ЗАВДАННЯ 2 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2>Завдання 2</h2>
+          </div>
+
+          <div class="content">
+            <p>
+              Маємо два масиви <span class="accent">numbers</span> та
+              <span class="accent">fruits</span> з попереднього завдання:
+            </p>
+            <p>numbers = [10, 100, 30, 40, 50]</p>
+            <p>
+              fruits = ["apple", "banana", "orange", "peach", "mango", "pear"]
+            </p>
+
+            <h3>Завдання</h3>
+            <ol class="example">
+              <li>
+                <span class="accent">Додати</span> в кінець масиву
+                <span class="accent">numbers</span> число
+                <span class="accent">7</span>.
+              </li>
+              <li>
+                Вивести оновлений масив <span class="accent">numbers</span>.
+              </li>
+              <li>
+                <span class="accent">Видалити</span> останнє значення масиву
+                <span class="accent">fruits</span>.
+              </li>
+              <li>
+                Вивести оновлений масив <span class="accent">fruits</span>.
+              </li>
+            </ol>
+
+            <h3>Очікуваний результат</h3>
+            <img src="./results/task_02.jpg" alt="task 2" />
+          </div>
+        </section>
+      </div>
+
+      <!-- *************** Частина 3 *************** -->
+      <div class="tab-content" id="tab-part3">
+        <!-- ТЕОРІЯ 3 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">forEach: </span>Теорія</h2>
+          </div>
+
+          <div class="content">
+            <!-- forEach() -->
+            <h3 id="theory3-foreach">forEach()</h3>
+            <p>
+              Ми можемо пройтися по кожному елементу масиву за допомогою методу
+              <span class="accent">forEach()</span>, що дозволяє виконати певну
+              дію для кожного з цих елементів.
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange", "peach", "mango"];</code></pre>
+            <pre><code class="language-javascript">// без методу forEach():
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);
+console.log(fruits[3]);
+console.log(fruits[4]);</code></pre>
+            <pre><code class="language-javascript">// з методом forEach() (варіант 1):
+fruits.forEach(function(fruit) {
+  console.log(fruit);
+});</code></pre>
+            <pre><code class="language-javascript">// з методом forEach() (варіант 2):
+fruits.forEach((fruit) => {
+  console.log(fruit);
+});</code></pre>
+            <img src="./results/example_02.jpg" alt="example 2" />
+
+            <h3 id="theory3-indexof">.indexOf()</h3>
+            <p>
+              Метод <span class="accent">.indexOf()</span> допомагає знайти
+              індекс певного елемента в масиві. Якщо елемент не знайдено,
+              повертається <span class="accent-2">-1</span>.
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange"];
+let index = fruits.indexOf("banana");
+console.log(index); // 1</code></pre>
+          </div>
+        </section>
+
+        <!-- ПРИКЛАД 3 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">forEach: </span>Приклад</h2>
+          </div>
+
+          <div class="content">
+            <p>
+              Маємо масив <span class="accent">numbers</span> з попереднього
+              завдання.
+            </p>
+            <p>numbers = [10, 100, 30, 40, 50, 7]</p>
+
+            <h3 id="example3-task">Завдання</h3>
+            <ol class="example">
+              <li>
+                Знайти <span class="accent">добуток</span> (product) всіх чисел
+                масиву <span class="accent">numbers</span>.
+              </li>
+              <li>
+                Знайти <span class="accent">найменше</span> (min) число в
+                масиві.
+              </li>
+              <li>
+                Знайти <span class="accent">індекс</span> найменшого числа
+                масиву.
+              </li>
+            </ol>
+
+            <h3 id="example3-solution">Приклад розв'язання</h3>
+            <pre><code class="language-javascript">// добуток
+let product = 1;
+numbers.forEach((num) => {
+  product *= num;
+});
+console.log("добуток: " + product);
+
+// найменше число
+let min = numbers[0];
+numbers.forEach((num) => {
+  if (num < min) {
+    min = num;
+  }
+});
+console.log("найменше число: " + min);
+
+// індекс найменшого числа
+console.log("індекс найменшого числа: " + numbers.indexOf(min));</code></pre>
+
+            <h3 id="example3-result">Результат</h3>
+            <img src="./results/example_03.jpg" alt="example 3" />
+          </div>
+        </section>
+
+        <!-- ЗАВДАННЯ 3 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2>Завдання 3</h2>
+          </div>
+
+          <div class="content">
+            <h3>Завдання</h3>
+            <ol class="example">
+              <li>
+                Вевести всі елементи масиву
+                <span class="accent">numbers</span> у консоль, кожен з нового
+                рядка.
+              </li>
+              <li>
+                Знайти <span class="accent">суму</span> (sum) всіх чисел масиву.
+              </li>
+              <li>
+                Знайти <span class="accent">середнє арифметичне</span> (average)
+                всіх чисел масиву. Підказка: сума / кількість елементів.
+              </li>
+              <li>
+                Знайти <span class="accent">найбільше</span> (max) число в
+                масиві.
+              </li>
+              <li>
+                Знайти <span class="accent">індекс</span> найбільшого числа
+                масиву.
+              </li>
+            </ol>
+
+            <h3>Очікуваний результат</h3>
+            <img src="./results/task_03.jpg" alt="task 3" />
+          </div>
+        </section>
+      </div>
+
+      <!-- *************** Частина 4 *************** -->
+      <div class="tab-content" id="tab-part4">
+        <!-- ТЕОРІЯ 4 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">splice: </span>Теорія</h2>
+          </div>
+
+          <div class="content">
+            <!-- splice() -->
+            <h3 id="theory4-splice">Splice()</h3>
+            <p>
+              З допомогою методу <span class="accent">splice()</span> можна:
+            </p>
+            <ul class="example">
+              <li>видалити з масиву один елемент з певним індексом;</li>
+              <li>
+                видалити з масиву кілька елементів починаючи з певного індексу;
+              </li>
+              <li>
+                видалити з масиву один або більше елементів і вставити на їхнє
+                місце якісь інші елементи.
+              </li>
+            </ul>
+            <pre><code class="language-javascript">let box = ["red", "green", "yellow", "blue", "white"];
+
+// знаходимо індекс 3, видаляємо 1 елемент:
+box.splice(3, 1);
+
+// знаходимо індекс 2, видаляємо 3 елементи:
+box.splice(2, 3); 
+
+// знаходимо індекс 1, видаляємо 1 елемент
+// додаємо на його місці 1 новий елемент:
+box.splice(1, 1, "black"); 
+
+// знаходимо індекс 1, видаляємо 1 елемент
+// додаємо на його місці 2 нові елементи:
+box.splice(1, 1, "black", "orange");</code></pre>
+          </div>
+        </section>
+
+        <!-- ПРИКЛАД 4 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2><span class="accent">splice: </span>Приклад</h2>
+          </div>
+
+          <div class="content">
+            <h3 id="example4-task">Завдання</h3>
+            <ol class="example">
+              <li>
+                Створити масив <span class="accent">gifts</span> з елементами
+                <span class="accent">
+                  ["шоколад", "шкарпетки", "ноутбук", "шампунь", "книга"] </span
+                >. Вивести масив у консоль.
+              </li>
+              <li>
+                Видалити з масиву <span class="accent">"шкарпетки"</span>.
+                Вивести оновлений масив у консоль.
+              </li>
+              <li>
+                Замінити <span class="accent">"шампунь"</span> на
+                <span class="accent">"телефон"</span> і
+                <span class="accent">"павербанк"</span>. Вивести оновлений масив
+                у консоль.
+              </li>
+            </ol>
+
+            <h3 id="example4-solution">Приклад розв'язання</h3>
+            <pre><code class="language-javascript">let gifts = ["шоколад", "шкарпетки", "ноутбук", "шампунь", "книга"];
+console.log(gifts);
+
+// видалити "шкарпетки":
+gifts.splice(1, 1); 
+console.log(gifts);
+
+// замінити "шампунь":
+gifts.splice(2, 1, "телефон", "павербанк"); 
+console.log(gifts);</code></pre>
+
+            <h3 id="example4-result">Результат</h3>
+            <img src="./results/example_04.jpg" alt="example 4" />
+          </div>
+        </section>
+
+        <!-- ЗАВДАННЯ 4 -->
+        <section>
+          <div class="flex toggle-header">
+            <button type="button">▶</button>
+            <h2>Завдання 4</h2>
+          </div>
+
+          <div class="content">
+            <h3>Завдання</h3>
+            <ol class="example">
+              <li>
+                Створити масив <span class="accent">games</span> з елементами
+                <span class="accent">
+                  ["Minecraft", "Fortnite", "GTA V", "Valorant", "Roblox"] </span
+                >. Вивести масив у консоль.
+              </li>
+              <li>
+                Видалити з масиву <span class="accent">"Valorant"</span>.
+                Вивести оновлений масив у консоль.
+              </li>
+              <li>
+                Замінити <span class="accent">"Fortnite"</span> і
+                <span class="accent">"GTA V"</span> на
+                <span class="accent">"Among Us"</span>. Вивести оновлений масив
+                у консоль.
+              </li>
+            </ol>
+
+            <h3>Очікуваний результат</h3>
+            <img src="./results/task_04.jpg" alt="task 4" />
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <button id="scrollTopBtn" title="Повернутися нагору">🚀</button>
+  </body>
+</html>
