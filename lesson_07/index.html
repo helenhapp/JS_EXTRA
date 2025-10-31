@@ -136,6 +136,20 @@ console.log(fruits); // ['apple', 'kiwi', 'orange']</code></pre>
             </p>
             <pre><code class="language-javascript">console.log(answers.length); // 5
 console.log(fruits.length); // 3</code></pre>
+
+            <!-- .indexOf() -->
+            <h3 id="theory3-indexof">.indexOf()</h3>
+            <p>
+              Метод <span class="accent">.indexOf()</span> допомагає знайти
+              індекс певного елемента в масиві. Якщо елемент не знайдено,
+              повертається <span class="accent-2">-1</span>.
+            </p>
+            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange"];
+
+let index = fruits.indexOf("banana");
+console.log(index); // 1
+
+console.log(fruits.indexOf("mango")); // -1</code></pre>
           </div>
         </section>
 
@@ -147,7 +161,7 @@ console.log(fruits.length); // 3</code></pre>
           </div>
 
           <div class="content">
-            <h3 id="example1-task">Завдання</h3>
+            <h3>Завдання</h3>
             <ol class="example">
               <li>
                 Створити масив <span class="accent">numbers</span> зі значеннями
@@ -167,14 +181,14 @@ console.log(fruits.length); // 3</code></pre>
               </li>
             </ol>
 
-            <h3 id="example1-solution">Приклад розв'язання</h3>
+            <h3>Приклад розв'язання</h3>
             <pre><code class="language-javascript">let numbers = [10, 20, 30, 40, 50]; // створюємо масив
 console.log(numbers[2]); // виводимо третє значення
 numbers[1] = 100; // змінюємо друге значення
 console.log(numbers); // виводимо весь масив
 console.log(numbers.length); // виводимо довжину</code></pre>
 
-            <h3 id="example1-result">Результат</h3>
+            <h3>Результат</h3>
             <img src="./results/example_01.jpg" alt="example 1" />
           </div>
         </section>
@@ -227,7 +241,7 @@ console.log(numbers.length); // виводимо довжину</code></pre>
 
           <div class="content">
             <!-- push() -->
-            <h3 id="theory2-push">push()</h3>
+            <h3>push()</h3>
             <p>
               Метод <span class="accent">push()</span> використовується, щоб
               додати новий елемент в кінець масиву:
@@ -237,7 +251,7 @@ fruits.push("orange");
 console.log(fruits); // ['apple', 'banana', 'orange']</code></pre>
 
             <!-- pop() -->
-            <h3 id="theory2-pop">pop()</h3>
+            <h3>pop()</h3>
             <p>
               Метод <span class="accent">pop()</span> використовується, щоб
               видалити останній елемент масиву:
@@ -301,7 +315,7 @@ console.log(fruits); // ['apple', 'banana']</code></pre>
 
           <div class="content">
             <!-- forEach() -->
-            <h3 id="theory3-foreach">forEach()</h3>
+            <h3>forEach()</h3>
             <p>
               Ми можемо пройтися по кожному елементу масиву за допомогою методу
               <span class="accent">forEach()</span> і виконати певну дію для
@@ -323,17 +337,6 @@ fruits.forEach((fruit) => {
   console.log(fruit);
 });</code></pre>
             <img src="./results/example_02.jpg" alt="example 2" />
-
-            <h3 id="theory3-indexof">.indexOf()</h3>
-            <p>
-              Метод <span class="accent">.indexOf()</span> допомагає знайти
-              індекс певного елемента в масиві. Якщо елемент не знайдено,
-              повертається <span class="accent-2">-1</span>.
-            </p>
-            <pre><code class="language-javascript">let fruits = ["apple", "banana", "orange"];
-let index = fruits.indexOf("banana");
-console.log(index); // 1
-console.log(fruits.indexOf("mango")); // -1</code></pre>
           </div>
         </section>
 
@@ -351,7 +354,7 @@ console.log(fruits.indexOf("mango")); // -1</code></pre>
             </p>
             <p>numbers = [10, 100, 30, 40, 50, 7]</p>
 
-            <h3 id="example3-task">Завдання</h3>
+            <h3>Завдання</h3>
             <ol class="example">
               <li>
                 Знайти <span class="accent">добуток</span> (product) всіх чисел
@@ -367,7 +370,7 @@ console.log(fruits.indexOf("mango")); // -1</code></pre>
               </li>
             </ol>
 
-            <h3 id="example3-solution">Приклад розв'язання</h3>
+            <h3>Приклад розв'язання</h3>
             <pre><code class="language-javascript">// добуток
 let product = 1;
 numbers.forEach((num) => {
@@ -387,7 +390,7 @@ console.log("найменше число: " + min);
 // індекс найменшого числа
 console.log("індекс найменшого числа: " + numbers.indexOf(min));</code></pre>
 
-            <h3 id="example3-result">Результат</h3>
+            <h3>Результат</h3>
             <img src="./results/example_03.jpg" alt="example 3" />
           </div>
         </section>
@@ -441,7 +444,7 @@ console.log("індекс найменшого числа: " + numbers.indexOf(m
 
           <div class="content">
             <!-- splice() -->
-            <h3 id="theory4-splice">Splice()</h3>
+            <h3>Splice()</h3>
             <p>
               З допомогою методу <span class="accent">splice()</span> можна:
             </p>
@@ -481,7 +484,7 @@ box.splice(1, 1, "black", "orange");</code></pre>
           </div>
 
           <div class="content">
-            <h3 id="example4-task">Завдання</h3>
+            <h3>Завдання</h3>
             <ol class="example">
               <li>
                 Створити масив <span class="accent">gifts</span> з елементами
@@ -501,7 +504,7 @@ box.splice(1, 1, "black", "orange");</code></pre>
               </li>
             </ol>
 
-            <h3 id="example4-solution">Приклад розв'язання</h3>
+            <h3>Приклад розв'язання</h3>
             <pre><code class="language-javascript">let gifts = ["шоколад", "шкарпетки", "ноутбук", "шампунь", "книга"];
 console.log(gifts);
 
@@ -513,7 +516,7 @@ console.log(gifts);
 gifts.splice(2, 1, "телефон", "павербанк"); 
 console.log(gifts);</code></pre>
 
-            <h3 id="example4-result">Результат</h3>
+            <h3>Результат</h3>
             <img src="./results/example_04.jpg" alt="example 4" />
           </div>
         </section>
